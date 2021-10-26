@@ -1,6 +1,10 @@
 package com.babakmhz.coffeeitassessment.data.model
 
+import io.objectbox.annotation.Entity
+import io.objectbox.annotation.Id
+
+@Entity
 data class Subselection(
-    val _id: String,
+    @Id(assignable = true)val _id: String,
     val name: String
 )

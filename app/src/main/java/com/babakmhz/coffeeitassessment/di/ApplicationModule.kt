@@ -6,6 +6,7 @@ import com.babakmhz.coffeeitassessment.data.RepositoryImpl
 import com.babakmhz.coffeeitassessment.data.network.ApiHelper
 import com.babakmhz.coffeeitassessment.data.network.ApiHelperImpl
 import com.babakmhz.coffeeitassessment.data.network.ApiService
+import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -25,6 +26,10 @@ class ApplicationModule {
 
     @Provides
     fun provideBaseUrl() = BuildConfig.BASE_URL
+
+    @Provides
+    @Singleton
+    fun provideGson(): Gson = Gson()
 
     @Provides
     @Singleton

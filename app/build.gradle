@@ -60,10 +60,6 @@ dependencies {
     implementation "com.google.android.material:material:$material_version"
 
 
-    //room
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
 
     //Network
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -139,3 +135,5 @@ dependencies {
 
 
 }
+// Apply plugin after dependencies block so they are not overwritten.
+apply plugin: 'io.objectbox'

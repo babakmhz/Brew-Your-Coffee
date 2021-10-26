@@ -2,8 +2,9 @@
 buildscript {
 
     ext {
-        //room
-        room_version = '2.3.0'
+
+        //objectbox
+        objectboxVersion = '3.0.1'
         // navigation
         navigationVersion = '2.3.5'
         //kotlin
@@ -97,6 +98,8 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
+
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
