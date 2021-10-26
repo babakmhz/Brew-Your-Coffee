@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="material_green">#209740</color>
     <color name="color_product_background">#222325</color>
+    <color name="color_inactive">#A4A3A3</color>
 </resources>
