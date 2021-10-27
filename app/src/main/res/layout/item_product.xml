@@ -2,20 +2,26 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data></data>
+    <data>
+
+        <variable
+            name="repo"
+            type="com.babakmhz.coffeeitassessment.data.model.device.Type" />
+    </data>
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:id="@+id/lyt_container"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:padding="8dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_height="wrap_content">
+            android:padding="8dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/item_img"
@@ -24,7 +30,8 @@
                 android:src="@drawable/coffee_startup"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadImage="@{repo.imageUrl}" />
 
             <TextView
                 android:id="@+id/item_title"
@@ -33,6 +40,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="monospace"
                 android:gravity="center"
+                android:text="@{repo.name}"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -48,13 +56,14 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="monospace"
                 android:gravity="center"
+                android:text="@{@string/d_sizes(repo.sizes.size)}"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/item_title"
-                tools:text="3 sizes" />
+                tools:text="@string/d_sizes" />
 
             <TextView
                 android:id="@+id/item_extra_count"
@@ -63,13 +72,14 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="monospace"
                 android:gravity="center"
+                android:text="@{@string/d_extras(repo.extras.size)}"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/item_size_count"
-                tools:text="2 Extras" />
+                tools:text="@string/d_extras" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

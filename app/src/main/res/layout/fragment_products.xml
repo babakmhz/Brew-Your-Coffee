@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ddd"
     android:orientation="vertical"
-    tools:context=".ProductsFragment">
+    tools:context=".view.product.ProductsFragment">
 
     <View
         android:id="@+id/view_right"
@@ -30,6 +30,7 @@
         android:id="@+id/lyt_overview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/view_right"
         app:layout_constraintStart_toStartOf="@id/view_right"
         app:layout_constraintTop_toTopOf="parent">

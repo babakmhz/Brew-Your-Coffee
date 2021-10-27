@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/productsFragment"
-        android:name="com.babakmhz.coffeeitassessment.ProductsFragment"
+        android:name="com.babakmhz.coffeeitassessment.view.product.ProductsFragment"
         android:label="fragment_products"
         tools:layout="@layout/fragment_products" >
         <action

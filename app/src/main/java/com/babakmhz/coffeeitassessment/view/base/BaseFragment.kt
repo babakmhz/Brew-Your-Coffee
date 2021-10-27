@@ -22,10 +22,8 @@ abstract class BaseFragment : Fragment(), LoadingContainer,BaseViewHelper {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeUI()
-        initializeViewModel()
     }
 
-    abstract fun initializeViewModel()
     abstract fun initializeUI()
 
 

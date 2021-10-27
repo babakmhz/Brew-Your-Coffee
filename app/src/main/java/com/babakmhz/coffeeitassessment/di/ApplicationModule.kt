@@ -1,5 +1,6 @@
 package com.babakmhz.coffeeitassessment.di
 
+import android.content.Context
 import com.babakmhz.coffeeitassessment.BuildConfig
 import com.babakmhz.coffeeitassessment.data.RepositoryHelper
 import com.babakmhz.coffeeitassessment.data.RepositoryImpl
@@ -12,6 +13,7 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.objectbox.BoxStore
 import kotlinx.coroutines.CoroutineScope
@@ -35,8 +37,11 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideBoxStore(): BoxStore = MyObjectBox.builder()
+    fun provideBoxStore(@ApplicationContext context: Context): BoxStore = MyObjectBox.builder()
+        .androidContext(context)
+        .name("myApp")
         .build()
+
 
     @Provides
     @Singleton
