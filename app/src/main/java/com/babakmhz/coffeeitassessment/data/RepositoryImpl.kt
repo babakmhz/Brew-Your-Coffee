@@ -17,11 +17,12 @@ class RepositoryImpl @Inject constructor(
     override suspend fun getDeviceCoffees(): Device {
         val device = apiService.getDeviceCoffees()
         for (type in device.types) {
-            if (dbHelper.getImageUrlForType(type).validString().not()){
-                val url = getImageUrlForType(type.name)
-                type.apply {
-                    imageUrl = url
-                }
+            var url = dbHelper.getImageUrlForType(type)
+            if (url.validString().not()){
+                url = getImageUrlForType(type.name)
+            }
+            type.apply {
+                imageUrl = url
             }
         }
         dbHelper.putAllData(device)

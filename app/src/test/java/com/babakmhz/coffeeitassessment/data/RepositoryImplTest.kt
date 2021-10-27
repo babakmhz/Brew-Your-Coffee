@@ -86,4 +86,39 @@ class RepositoryImplTest {
                 assertTrue(type.imageUrl.validString())
             }
         }
+
+
+
+    @Test
+    fun `test getting types from server handles associated images if `() =
+        coroutineTestRule.coroutineScope.runBlockingTest {
+            //before
+            for (type in sampleTypesResponse.types)
+                type.imageUrl = "ValidString"
+            coEvery { apiService.getDeviceCoffees() } returns sampleTypesResponse
+            coEvery { apiService.getTypeImage(ofType()) } returns TypeImage(
+                arrayListOf(
+                    Result(
+                        Urls(
+                            "someUrl",
+                            "someUrl",
+                            "someUrl",
+                            "someUrl",
+                            "someUrl",
+                        )
+                    )
+                )
+            )
+
+            every { dbHelper.putAllData(ofType()) } returns 1L
+            every { dbHelper.getImageUrlForType(ofType()) } returns ""
+
+            //when
+            val devices = repo.getDeviceCoffees()
+
+            //then
+            for(type in devices.types){
+                assertTrue(type.imageUrl.validString())
+            }
+        }
 }
