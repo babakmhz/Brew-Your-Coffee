@@ -4,7 +4,6 @@ import com.babakmhz.coffeeitassessment.data.model.device.Device
 import com.babakmhz.coffeeitassessment.data.model.device.Extra
 import com.babakmhz.coffeeitassessment.data.model.device.Size
 import com.babakmhz.coffeeitassessment.data.model.device.Type
-import com.babakmhz.coffeeitassessment.data.model.typeImages.Urls
 import io.objectbox.BoxStore
 import javax.inject.Inject
 
@@ -40,7 +39,9 @@ class DbImpl @Inject constructor(private val boxStore: BoxStore) : DbHelper {
     }
 
     override fun getImageUrlForType(type: Type): String {
-        return typesBoxStore[type.id].imageUrl
+        return typesBoxStore.query().filter {
+            type.name == it.name
+        }.build().findFirst()?.imageUrl ?: ""
     }
 
 
