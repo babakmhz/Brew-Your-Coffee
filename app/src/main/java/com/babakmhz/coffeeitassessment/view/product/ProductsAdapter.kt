@@ -34,6 +34,7 @@ class ProductsAdapter(
         this.items.addAll(types)
         notifyDataSetChanged()
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(ItemProductBinding.inflate(LayoutInflater.from(context), parent, false))
     }

@@ -4,12 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import com.babakmhz.coffeeitassessment.R
 import com.babakmhz.coffeeitassessment.data.model.device.Type
 import com.babakmhz.coffeeitassessment.databinding.FragmentProductsBinding
 import com.babakmhz.coffeeitassessment.utils.State
 import com.babakmhz.coffeeitassessment.view.base.BaseActivity
 import com.babakmhz.coffeeitassessment.view.base.BaseFragment
 import com.babakmhz.coffeeitassessment.view.main.MainViewModel
+import timber.log.Timber
 
 
 class ProductsFragment : BaseFragment() {
@@ -24,11 +28,12 @@ class ProductsFragment : BaseFragment() {
     override fun initializeUI() {
         binding.rclProducts.apply {
             productsAdapter = ProductsAdapter(requireContext(), arrayListOf()) {
-                this.adapter = productsAdapter
             }
+
+            this.adapter = productsAdapter
+            layoutManager = GridLayoutManager(requireContext(),2)
         }
     }
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
