@@ -16,12 +16,12 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
+        android:id="@+id/img_exit"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginBottom="16dp"
         android:src="@drawable/power_off"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/img_exit"
         app:layout_constraintEnd_toEndOf="@id/view_right"
         app:layout_constraintStart_toStartOf="@id/view_right" />
 
@@ -30,45 +30,57 @@
         android:id="@+id/lyt_overview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/view_right"
         app:layout_constraintStart_toStartOf="@id/view_right"
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <TextView
-            android:id="@+id/txt_overview"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:id="@+id/txt_overview"
             android:layout_marginStart="4dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="4dp"
+            android:gravity="center"
             android:background="@drawable/shape_bt_green_50r"
             android:elevation="4dp"
-            android:fontFamily="monospace"
-            android:foregroundGravity="center"
-            android:gravity="center"
             android:padding="8dp"
-            android:text="@string/overview"
-            android:textColor="@color/white" />
+            android:layout_marginEnd="4dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="24dp"
+                android:src="@drawable/shopping_bag"
+                android:padding="4dp"
+                android:layout_height="24dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:elevation="4dp"
+                android:fontFamily="monospace"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:text="@string/overview"
+                android:textColor="@color/white" />
 
+        </LinearLayout>
         <TextView
+            android:id="@+id/txt_itemCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_alignEnd="@id/txt_overview"
+            android:layout_marginTop="12dp"
             android:background="@drawable/shape_red_10r"
-            android:id="@+id/txt_itemCount"
-            android:translationZ="90dp"
             android:fontFamily="monospace"
-            android:padding="2dp"
-            tools:text="10"
-            android:minWidth="30dp"
             android:gravity="center"
-            android:layout_marginBottom="4dp"
-            android:layout_marginTop="4dp"
+            android:minWidth="30dp"
+            android:padding="2dp"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:translationZ="90dp"
+            android:text="0"
+            tools:text="0" />
 
     </RelativeLayout>
 
