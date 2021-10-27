@@ -11,5 +11,6 @@ interface DbHelper {
      fun putAllData(device: Device):Long
      fun getSizesForType(type: Type):List<Size>
      fun getExtrasForType(type: Type):List<Extra>
+     fun getImageUrlForType(type:Type):String
      fun clearTables()
 }

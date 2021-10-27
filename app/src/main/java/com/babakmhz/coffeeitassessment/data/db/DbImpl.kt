@@ -39,6 +39,9 @@ class DbImpl @Inject constructor(private val boxStore: BoxStore) : DbHelper {
         return query.find()
     }
 
+    override fun getImageUrlForType(type: Type): String {
+        return typesBoxStore[type.id].imageUrl
+    }
 
 
     override fun clearTables() {

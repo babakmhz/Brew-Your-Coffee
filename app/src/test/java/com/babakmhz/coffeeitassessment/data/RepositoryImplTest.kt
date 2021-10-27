@@ -59,6 +59,7 @@ class RepositoryImplTest {
     @Test
     fun `test getting types from server handles associated images`() =
         coroutineTestRule.coroutineScope.runBlockingTest {
+            //before
             coEvery { apiService.getDeviceCoffees() } returns sampleTypesResponse
             coEvery { apiService.getTypeImage(ofType()) } returns TypeImage(
                 arrayListOf(
@@ -73,10 +74,14 @@ class RepositoryImplTest {
                     )
                 )
             )
-            every { dbHelper.putAllData(ofType()) } returns 1L
 
+            every { dbHelper.putAllData(ofType()) } returns 1L
+            every { dbHelper.getImageUrlForType(ofType()) } returns ""
+
+            //when
             val devices = repo.getDeviceCoffees()
 
+            //then
             for(type in devices.types){
                 assertTrue(type.imageUrl.validString())
             }
