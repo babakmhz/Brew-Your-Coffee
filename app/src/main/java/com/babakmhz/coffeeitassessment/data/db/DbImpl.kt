@@ -1,9 +1,6 @@
 package com.babakmhz.coffeeitassessment.data.db
 
-import com.babakmhz.coffeeitassessment.data.model.device.Device
-import com.babakmhz.coffeeitassessment.data.model.device.Extra
-import com.babakmhz.coffeeitassessment.data.model.device.Size
-import com.babakmhz.coffeeitassessment.data.model.device.Type
+import com.babakmhz.coffeeitassessment.data.model.device.*
 import io.objectbox.BoxStore
 import javax.inject.Inject
 
@@ -13,6 +10,7 @@ class DbImpl @Inject constructor(private val boxStore: BoxStore) : DbHelper {
     private val sizesBoxStore = boxStore.boxFor(Size::class.java)
     private val deviceBoxStore = boxStore.boxFor(Device::class.java)
     private val extraBoxStore = boxStore.boxFor(Extra::class.java)
+    private val subSelectionsBoxStore = boxStore.boxFor(Subselection::class.java)
 
     override fun putAllData(device: Device): Long {
         clearTables()
@@ -20,7 +18,9 @@ class DbImpl @Inject constructor(private val boxStore: BoxStore) : DbHelper {
         sizesBoxStore.put(device.sizes)
         extraBoxStore.put(device.extras)
         typesBoxStore.put(device.types)
-
+        for (extra in device.extras) {
+            subSelectionsBoxStore.put(extra.subselections)
+        }
         return id
     }
 
@@ -39,9 +39,10 @@ class DbImpl @Inject constructor(private val boxStore: BoxStore) : DbHelper {
     }
 
     override fun getImageUrlForType(type: Type): String {
-        return typesBoxStore.query().filter {
+        val types = typesBoxStore.query().filter {
             type.name == it.name
-        }.build().findFirst()?.imageUrl ?: ""
+        }.build().find()
+        return if (types.isEmpty()) "" else types[0].imageUrl
     }
 
 

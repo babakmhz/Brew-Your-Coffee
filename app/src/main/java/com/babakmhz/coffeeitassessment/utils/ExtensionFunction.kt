@@ -6,6 +6,7 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 fun View?.toVisible() {
     if (this?.visibility != View.VISIBLE)
@@ -31,6 +32,7 @@ fun <T : Any> CoroutineScope.launchWithException(
     block: suspend CoroutineScope.() -> Unit
 ) : Job {
     return launch(CoroutineExceptionHandler { _, throwable ->
+        Timber.e("Error : ${throwable.printStackTrace()}")
         livedata.postValue(State.Error(throwable))
     },block=block)
 }

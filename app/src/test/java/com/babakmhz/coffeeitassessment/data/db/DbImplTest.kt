@@ -25,6 +25,7 @@ class DbImplTest {
     private lateinit var typesBox: Box<Type>
     private lateinit var sizesBox: Box<Size>
     private lateinit var extrasBox :Box<Extra>
+    private lateinit var subSelectionsBox :Box<Subselection>
 
     private lateinit var device: Device
     private var deviceId = -1L
@@ -52,6 +53,7 @@ class DbImplTest {
         typesBox = store.boxFor(Type::class.java)
         sizesBox = store.boxFor(Size::class.java)
         extrasBox = store.boxFor(Extra::class.java)
+        subSelectionsBox = store.boxFor(Subselection::class.java)
 
         val gson = Gson()
         device = gson.fromJson(sampleResponse, Device::class.java)
@@ -67,6 +69,7 @@ class DbImplTest {
         assertFalse(typesBox.all.isEmpty())
         assertFalse(sizesBox.all.isEmpty())
         assertFalse(extrasBox.all.isEmpty())
+        assertFalse(subSelectionsBox.all.isEmpty())
     }
 
 
