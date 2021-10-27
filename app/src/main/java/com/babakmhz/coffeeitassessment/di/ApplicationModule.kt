@@ -3,6 +3,7 @@ package com.babakmhz.coffeeitassessment.di
 import com.babakmhz.coffeeitassessment.BuildConfig
 import com.babakmhz.coffeeitassessment.data.RepositoryHelper
 import com.babakmhz.coffeeitassessment.data.RepositoryImpl
+import com.babakmhz.coffeeitassessment.data.model.MyObjectBox
 import com.babakmhz.coffeeitassessment.data.network.ApiHelper
 import com.babakmhz.coffeeitassessment.data.network.ApiHelperImpl
 import com.babakmhz.coffeeitassessment.data.network.ApiService
@@ -12,6 +13,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import io.objectbox.BoxStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
@@ -30,6 +32,12 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun provideGson(): Gson = Gson()
+
+    @Provides
+    @Singleton
+    fun provideBoxStore(): BoxStore = MyObjectBox.builder()
+        .build()
+
 
     @Provides
     @Singleton

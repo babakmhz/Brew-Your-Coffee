@@ -1,0 +1,192 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:1622034080962697845",
+      "lastPropertyId": "2:1844453494048323966",
+      "name": "Device",
+      "properties": [
+        {
+          "id": "1:8689123423993274868",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1844453494048323966",
+          "name": "_id",
+          "type": 9
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:8495632463576499622",
+          "name": "extras",
+          "targetId": "2:7662770076384594664"
+        },
+        {
+          "id": "2:6419872978235916401",
+          "name": "sizes",
+          "targetId": "3:2919189202090066089"
+        },
+        {
+          "id": "3:7432166123311550084",
+          "name": "types",
+          "targetId": "5:5780523912869369532"
+        }
+      ]
+    },
+    {
+      "id": "2:7662770076384594664",
+      "lastPropertyId": "4:7603401405043614426",
+      "name": "Extra",
+      "properties": [
+        {
+          "id": "1:5689419254604044559",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4859715957902336762",
+          "name": "_id",
+          "type": 9
+        },
+        {
+          "id": "3:235318199643870131",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:7603401405043614426",
+          "name": "typeId",
+          "indexId": "1:5187431018309780442",
+          "type": 11,
+          "flags": 520,
+          "relationTarget": "Type"
+        }
+      ],
+      "relations": [
+        {
+          "id": "4:1742341775973362022",
+          "name": "subselections",
+          "targetId": "4:6963571263303566615"
+        }
+      ]
+    },
+    {
+      "id": "3:2919189202090066089",
+      "lastPropertyId": "6:5380116206411187051",
+      "name": "Size",
+      "properties": [
+        {
+          "id": "1:3841853436973306972",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2923483456485103945",
+          "name": "__v",
+          "type": 5
+        },
+        {
+          "id": "3:2860871788233421765",
+          "name": "_id",
+          "type": 9
+        },
+        {
+          "id": "4:7666919493558827691",
+          "name": "name",
+          "type": 9
+        }
+      ],
+      "relations": [
+        {
+          "id": "5:4804797354796735040",
+          "name": "type",
+          "targetId": "5:5780523912869369532"
+        }
+      ]
+    },
+    {
+      "id": "4:6963571263303566615",
+      "lastPropertyId": "3:4495383885127078827",
+      "name": "Subselection",
+      "properties": [
+        {
+          "id": "1:5932422709385314918",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:7184748387099363494",
+          "name": "_id",
+          "type": 9
+        },
+        {
+          "id": "3:4495383885127078827",
+          "name": "name",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:5780523912869369532",
+      "lastPropertyId": "6:2041625891781145952",
+      "name": "Type",
+      "properties": [
+        {
+          "id": "1:8915452478145082845",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:271923088189123118",
+          "name": "_id",
+          "type": 9
+        },
+        {
+          "id": "3:1528543306512044137",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:7211816236714993324",
+          "name": "extras",
+          "type": 30
+        },
+        {
+          "id": "5:1242345875874955835",
+          "name": "sizes",
+          "type": 30
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "5:5780523912869369532",
+  "lastIndexId": "4:8804844705208509505",
+  "lastRelationId": "5:4804797354796735040",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [
+    8768569727568682980,
+    7509673987794806039,
+    8804844705208509505
+  ],
+  "retiredPropertyUids": [
+    7575030524276726704,
+    2041625891781145952,
+    5380116206411187051
+  ],
+  "retiredRelationUids": [],
+  "version": 1
+}

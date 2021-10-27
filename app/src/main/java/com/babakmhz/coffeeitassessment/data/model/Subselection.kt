@@ -5,6 +5,7 @@ import io.objectbox.annotation.Id
 
 @Entity
 data class Subselection(
-    @Id(assignable = true)val _id: String,
-    val name: String
+   @Id  var id:Long = 0L,
+    var _id: String = "",
+    var name: String = ""
 )

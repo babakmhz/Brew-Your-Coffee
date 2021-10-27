@@ -3,11 +3,11 @@ package com.babakmhz.coffeeitassessment.data.model
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
 
-
 @Entity
 data class Device(
-    @Id(assignable = true) val _id: String,
-    val extras: List<Extra>,
-    val sizes: List<Size>,
-    val types: List<Type>
+    @Id  var id:Long = 0L,
+    var _id: String = "",
+    var extras: List<Extra> = arrayListOf(),
+    var sizes: List<Size> = arrayListOf(),
+    var types: List<Type> = arrayListOf()
 )

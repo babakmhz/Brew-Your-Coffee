@@ -5,8 +5,9 @@ import io.objectbox.annotation.Id
 
 @Entity
 data class Type(
-    @Id(assignable = true) val _id: String,
-    val extras: List<String>,
-    val name: String,
-    val sizes: List<String>
+    @Id var id: Long = 0L,
+    var _id: String = "",
+    var name: String = "",
+    var extras: List<String> = arrayListOf(),
+    var sizes: List<String> = arrayListOf()
 )
