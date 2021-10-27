@@ -1,4 +1,4 @@
-package com.babakmhz.coffeeitassessment.data.db.network
+package com.babakmhz.coffeeitassessment.data.network
 
 const val sampleResponse = "{\n" +
         "    \"_id\": \"60ba1ab72e35f2d9c786c610\",\n" +

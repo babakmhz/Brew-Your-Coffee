@@ -1,6 +1,6 @@
-package com.babakmhz.coffeeitassessment.data.db.network
+package com.babakmhz.coffeeitassessment.data.network
 
-import com.babakmhz.coffeeitassessment.data.model.Device
+import com.babakmhz.coffeeitassessment.data.model.device.Device
 import com.google.gson.Gson
 import junit.framework.Assert.assertFalse
 import junit.framework.Assert.assertTrue

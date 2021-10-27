@@ -1,8 +1,8 @@
 package com.babakmhz.coffeeitassessment.data.db
 
 
-import com.babakmhz.coffeeitassessment.data.db.network.sampleResponse
-import com.babakmhz.coffeeitassessment.data.model.*
+import com.babakmhz.coffeeitassessment.data.model.device.*
+import com.babakmhz.coffeeitassessment.data.network.sampleResponse
 import com.google.gson.Gson
 import io.objectbox.Box
 import io.objectbox.BoxStore
@@ -35,12 +35,7 @@ class DbImplTest {
     @Test
     fun smokeTest() = assertTrue(true)
 
-    private fun saveDeviceObjectToDb(): Long {
-        val deviceId = deviceBox.put(device)
-        typesBox.put(device.types)
-        sizesBox.put(device.sizes)
-        return deviceId
-    }
+
 
     @Before
     fun setUp() {

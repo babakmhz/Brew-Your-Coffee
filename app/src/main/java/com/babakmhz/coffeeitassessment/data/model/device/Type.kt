@@ -1,4 +1,4 @@
-package com.babakmhz.coffeeitassessment.data.model
+package com.babakmhz.coffeeitassessment.data.model.device
 
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
@@ -9,5 +9,7 @@ data class Type(
     var _id: String = "",
     var name: String = "",
     var extras: List<String> = arrayListOf(),
-    var sizes: List<String> = arrayListOf()
-)
+    var sizes: List<String> = arrayListOf(),
+    var imageUrl: String = ""
+) {
+}

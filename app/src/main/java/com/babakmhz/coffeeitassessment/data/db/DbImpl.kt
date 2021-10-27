@@ -1,6 +1,10 @@
 package com.babakmhz.coffeeitassessment.data.db
 
-import com.babakmhz.coffeeitassessment.data.model.*
+import com.babakmhz.coffeeitassessment.data.model.device.Device
+import com.babakmhz.coffeeitassessment.data.model.device.Extra
+import com.babakmhz.coffeeitassessment.data.model.device.Size
+import com.babakmhz.coffeeitassessment.data.model.device.Type
+import com.babakmhz.coffeeitassessment.data.model.typeImages.Urls
 import io.objectbox.BoxStore
 import javax.inject.Inject
 
@@ -34,6 +38,8 @@ class DbImpl @Inject constructor(private val boxStore: BoxStore) : DbHelper {
         }.build()
         return query.find()
     }
+
+
 
     override fun clearTables() {
         deviceBoxStore.removeAll()

@@ -1,4 +1,4 @@
-package com.babakmhz.coffeeitassessment.data.model
+package com.babakmhz.coffeeitassessment.data.model.device
 
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id

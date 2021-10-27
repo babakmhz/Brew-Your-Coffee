@@ -16,6 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
         buildConfigField('String','BASE_URL',"\"https://darkroastedbeans.coffeeit.nl/\"")
+        buildConfigField('String','Unsplash_client_id',"\"E39Vok5SsBvYPIvc4Fb7rMeq55HqQOUGDggXEKPduXg\"")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

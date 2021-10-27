@@ -3,9 +3,9 @@ package com.babakmhz.coffeeitassessment.di
 import com.babakmhz.coffeeitassessment.BuildConfig
 import com.babakmhz.coffeeitassessment.data.RepositoryHelper
 import com.babakmhz.coffeeitassessment.data.RepositoryImpl
-import com.babakmhz.coffeeitassessment.data.model.MyObjectBox
-import com.babakmhz.coffeeitassessment.data.network.ApiHelper
-import com.babakmhz.coffeeitassessment.data.network.ApiHelperImpl
+import com.babakmhz.coffeeitassessment.data.db.DbHelper
+import com.babakmhz.coffeeitassessment.data.db.DbImpl
+import com.babakmhz.coffeeitassessment.data.model.device.MyObjectBox
 import com.babakmhz.coffeeitassessment.data.network.ApiService
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -38,6 +38,9 @@ class ApplicationModule {
     fun provideBoxStore(): BoxStore = MyObjectBox.builder()
         .build()
 
+    @Provides
+    @Singleton
+    fun provideDbHelper(dbImpl: DbImpl): DbHelper = dbImpl
 
     @Provides
     @Singleton
@@ -66,9 +69,6 @@ class ApplicationModule {
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
-    @Provides
-    @Singleton
-    fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper
 
     @Provides
     @Singleton
