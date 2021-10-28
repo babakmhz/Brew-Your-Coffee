@@ -17,4 +17,5 @@
     <string name="edit"><u>Edit</u></string>
     <string name="d_sizes">%d sizes</string>
     <string name="d_extras">%d Extras</string>
+    <string name="please_select_one_size">Please select one Size!</string>
 </resources>

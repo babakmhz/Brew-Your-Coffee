@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.babakmhz.coffeeitassessment.data.RepositoryHelper
-import com.babakmhz.coffeeitassessment.data.model.device.Device
 import com.babakmhz.coffeeitassessment.data.model.device.Extra
 import com.babakmhz.coffeeitassessment.data.model.device.Size
 import com.babakmhz.coffeeitassessment.data.model.device.Type
@@ -24,6 +23,11 @@ class MainViewModel @Inject constructor(
     private var _typesLiveData = MutableLiveData<State<List<Type>>>()
     val typesLivedata: LiveData<State<List<Type>>> = _typesLiveData
 
+    private var _overviewSizeLiveData = MutableLiveData<Int>()
+    val overviewSizeLiveData: LiveData<Int> = _overviewSizeLiveData
+
+
+    val orderedTypes = arrayListOf<Type>()
 
     fun getTypes() {
         viewModelScope.launchWithException(_typesLiveData) {
@@ -33,11 +37,16 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun getSizesForType(type: Type):List<Size>{
+    fun getSizesForType(type: Type): List<Size> {
         return repositoryHelper.getSizesForType(type)
     }
 
-    fun getExtrasForType(type: Type):List<Extra>{
+    fun getExtrasForType(type: Type): List<Extra> {
         return repositoryHelper.getExtrasForType(type)
+    }
+
+    fun addToWishList(type:Type){
+        orderedTypes.add(type)
+        _overviewSizeLiveData.postValue(orderedTypes.size)
     }
 }

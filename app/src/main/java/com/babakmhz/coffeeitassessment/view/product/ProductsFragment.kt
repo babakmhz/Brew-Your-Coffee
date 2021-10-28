@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.babakmhz.coffeeitassessment.R
 import com.babakmhz.coffeeitassessment.databinding.FragmentProductsBinding
 import com.babakmhz.coffeeitassessment.utils.State
 import com.babakmhz.coffeeitassessment.view.base.BaseActivity
@@ -30,7 +31,7 @@ class ProductsFragment : BaseFragment() {
             }
 
             this.adapter = productsAdapter
-            layoutManager = GridLayoutManager(requireContext(),2)
+            layoutManager = GridLayoutManager(requireContext(), 2)
         }
     }
 
@@ -39,6 +40,7 @@ class ProductsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getTypes()
         observeTypesLiveData()
+        observeOverviewCount()
 
     }
 
@@ -56,6 +58,12 @@ class ProductsFragment : BaseFragment() {
             }
         }
     }
+
+    private fun observeOverviewCount() =
+        viewModel.overviewSizeLiveData.observe(viewLifecycleOwner) {
+            binding.txtOverviewCount.text = it.toString()
+            animateViewFromResource(binding.lytOverview,requireContext(), R.anim.shake)
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -12,7 +12,9 @@ import com.babakmhz.coffeeitassessment.databinding.ItemExtrasBinding
 class ExtrasAdapter(
     private val context: Context,
     private val items: ArrayList<Extra>,
+    private val onSubSelected:(Extra)->Unit
 ) : RecyclerView.Adapter<ExtrasAdapter.ViewHolder>() {
+
 
     inner class ViewHolder(private val binding: ItemExtrasBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -25,21 +27,14 @@ class ExtrasAdapter(
                 adapter = SubSelectionsAdapter(context,
                     item.subselections as ArrayList<Subselection>
                 ) {
-
+                    onSubSelected.invoke(item.apply {
+                        selectedSub = it
+                    })
                 }
             }
         }
 
     }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun addItems(types: ArrayList<Extra>) {
-        this.items.clear()
-        this.items.addAll(types)
-        notifyDataSetChanged()
-    }
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(ItemExtrasBinding.inflate(LayoutInflater.from(context), parent, false))
