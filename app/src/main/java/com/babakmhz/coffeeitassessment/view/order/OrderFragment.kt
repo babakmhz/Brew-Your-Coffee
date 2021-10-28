@@ -39,7 +39,7 @@ class OrderFragment : BaseBottomSheetFragment() {
                     requireContext(),
                     viewModel.getSizesForType(type) as ArrayList<Size>
                 ) {
-                   selectedType.selectedSize = it
+                    selectedType.selectedSize = it
                 }
             }
 
@@ -47,7 +47,7 @@ class OrderFragment : BaseBottomSheetFragment() {
                 adapter = ExtrasAdapter(
                     requireContext(),
                     viewModel.getExtrasForType(type) as ArrayList<Extra>
-                ){
+                ) {
                     selectedType.selectedExtras.add(it)
                 }
             }
@@ -60,11 +60,27 @@ class OrderFragment : BaseBottomSheetFragment() {
         }
 
         binding.btConfirm.setOnClickListener {
-            if (selectedType.selectedSize==null){
-                showSnackBar(binding.container,getString(R.string.please_select_one_size))
-            }else{
-                viewModel.addToWishList(selectedType)
+            if (selectedType.selectedSize == null) {
+                showSnackBar(binding.container, getString(R.string.please_select_one_size))
+            } else {
+                viewModel.addToWishList(selectedType.apply {
+                    selectedCount = binding.txtCountIndicator.text.toString().toInt()
+                })
                 dismiss()
+            }
+        }
+
+
+        binding.btMinus.setOnClickListener {
+            binding.txtCountIndicator.apply {
+                if (text.toString().toInt()>0){
+                    text = (text.toString().toInt() -1 ).toString()
+                }
+            }
+        }
+        binding.btPlus.setOnClickListener {
+            binding.txtCountIndicator.apply {
+                text = (text.toString().toInt() + 1).toString()
             }
         }
     }

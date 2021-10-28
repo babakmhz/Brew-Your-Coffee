@@ -15,9 +15,13 @@ data class Type(
     var extras: List<String> = arrayListOf(),
     var sizes: List<String> = arrayListOf(),
     var imageUrl: String = ""
-) :Parcelable{
+) : Parcelable {
     @Transient
-    var selectedSize:Size? = null
+    var selectedSize: Size? = null
+
     @Transient
-    var selectedExtras :HashSet<Extra> = hashSetOf()
+    var selectedExtras: HashSet<Extra> = hashSetOf()
+
+    @Transient
+    var selectedCount = 0
 }

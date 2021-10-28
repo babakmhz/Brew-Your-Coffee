@@ -39,7 +39,7 @@
     </dialog>
     <fragment
         android:id="@+id/overviewFragement"
-        android:name="com.babakmhz.coffeeitassessment.OverviewFragement"
+        android:name="com.babakmhz.coffeeitassessment.OverviewFragment"
         android:label="fragment_overview_fragement"
         tools:layout="@layout/fragment_overview" >
         <action
