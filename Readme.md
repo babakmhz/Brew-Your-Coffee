@@ -16,7 +16,7 @@ Hi There!
 - Junit4 for unit testing
 
 * as mentioned in assessment description i omitted the NFC part
-* If there were any comments about the project please contact me at Emails mentioned above!
+* If there were any comments about the project please contact me at Email mentioned above!
 
 Best,
 Babak
