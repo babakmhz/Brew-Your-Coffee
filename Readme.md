@@ -1,7 +1,5 @@
 Hi There!
 
-This is the coffeeIT android assignment developed by "babakmhz96@gmail.com"
-
 * In this project I used MVVM as the base architecture of the application and used these
   libraries/technologies/principles:
 
