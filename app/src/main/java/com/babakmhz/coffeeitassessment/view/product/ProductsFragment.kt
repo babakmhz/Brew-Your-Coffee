@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.babakmhz.coffeeitassessment.R
 import com.babakmhz.coffeeitassessment.databinding.FragmentProductsBinding
 import com.babakmhz.coffeeitassessment.utils.State
+import com.babakmhz.coffeeitassessment.utils.toGone
+import com.babakmhz.coffeeitassessment.utils.toVisible
 import com.babakmhz.coffeeitassessment.view.base.BaseActivity
 import com.babakmhz.coffeeitassessment.view.base.BaseFragment
 import com.babakmhz.coffeeitassessment.view.main.MainViewModel
@@ -41,6 +43,11 @@ class ProductsFragment : BaseFragment() {
         binding.imgExit.setOnClickListener {
             requireActivity().finish()
         }
+
+        binding.btTryAgain.setOnClickListener {
+            it.toGone()
+            viewModel.getTypes()
+        }
     }
 
 
@@ -57,11 +64,15 @@ class ProductsFragment : BaseFragment() {
         when (it) {
             is State.Error -> {
                 hideLoadingDialog(this::class.java.simpleName)
+                binding.btTryAgain.toVisible()
+                binding.rclProducts.toGone()
                 showErrorSnackBar(requireView())
             }
             State.Loading -> showLoadingDialog(this::class.java.simpleName)
             is State.Success -> {
                 hideLoadingDialog(this::class.java.simpleName)
+                binding.btTryAgain.toGone()
+                binding.rclProducts.toVisible()
                 productsAdapter.addItems(it.data)
             }
         }

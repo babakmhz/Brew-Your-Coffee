@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.babakmhz.coffeeitassessment.R
 import com.babakmhz.coffeeitassessment.data.model.device.Type
 import com.babakmhz.coffeeitassessment.databinding.FragmentOverviewBinding
 import com.babakmhz.coffeeitassessment.view.base.BaseActivity
@@ -32,8 +33,15 @@ class OverviewFragment : BaseFragment() {
     }
 
     override fun initializeUI() {
-        rcl_overview.apply {
-            adapter = getOverviewAdapter(arrayListOf(viewModel.orderedType))
+        binding.rclOverview.apply {
+            viewModel.orderedType?.let {
+                adapter = getOverviewAdapter(arrayListOf(it))
+            }
+        }
+
+        binding.btBrew.setOnClickListener {
+            viewModel.brewYourCoffee()
+            findNavController().popBackStack(R.id.productsFragment,false)
         }
 
         observeTypes()
@@ -41,7 +49,9 @@ class OverviewFragment : BaseFragment() {
 
     private fun observeTypes() = viewModel.overviewTypesLiveData.observe(viewLifecycleOwner) {
         rcl_overview.apply {
-            adapter = getOverviewAdapter(arrayListOf(it))
+            it?.let {
+                adapter = getOverviewAdapter(arrayListOf(it))
+            }
         }
     }
 

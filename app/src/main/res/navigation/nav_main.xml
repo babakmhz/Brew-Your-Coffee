@@ -13,6 +13,7 @@
         <action
             android:id="@+id/action_startUpFragment_to_productsFragment"
             app:destination="@id/productsFragment"
+            app:enterAnim="@anim/slide_in_right"
             app:launchSingleTop="true"
             app:popUpTo="@id/main_nav"
             app:popUpToInclusive="true" />
@@ -27,7 +28,8 @@
             app:destination="@id/orderFragment" />
         <action
             android:id="@+id/action_productsFragment_to_overviewFragement"
-            app:destination="@id/overviewFragement" />
+            app:destination="@id/overviewFragement"
+            app:enterAnim="@anim/slide_in_right" />
     </fragment>
     <dialog
         android:id="@+id/orderFragment"
@@ -49,5 +51,11 @@
         <action
             android:id="@+id/action_overviewFragement_to_orderFragment"
             app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_overviewFragement_to_productsFragment"
+            app:destination="@id/productsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popUpTo="@id/productsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

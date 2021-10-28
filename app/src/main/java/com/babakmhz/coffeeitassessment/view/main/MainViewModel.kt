@@ -29,7 +29,7 @@ class MainViewModel @Inject constructor(
     private var _overviewTypesLiveData = MutableLiveData<Type>()
     val overviewTypesLiveData: LiveData<Type> = _overviewTypesLiveData
 
-    var orderedType = Type()
+    var orderedType: Type? = null
 
     fun getTypes() {
         viewModelScope.launchWithException(_typesLiveData) {
@@ -51,5 +51,11 @@ class MainViewModel @Inject constructor(
         orderedType = type
         _overviewSizeLiveData.postValue(1)
         _overviewTypesLiveData.postValue(orderedType)
+    }
+
+    fun brewYourCoffee(){
+        orderedType = null
+        _overviewTypesLiveData.postValue(orderedType)
+        _overviewSizeLiveData.postValue(0)
     }
 }
