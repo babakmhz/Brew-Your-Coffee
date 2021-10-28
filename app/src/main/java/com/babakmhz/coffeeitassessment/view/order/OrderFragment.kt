@@ -10,6 +10,7 @@ import com.babakmhz.coffeeitassessment.data.model.device.Extra
 import com.babakmhz.coffeeitassessment.data.model.device.Size
 import com.babakmhz.coffeeitassessment.data.model.device.Type
 import com.babakmhz.coffeeitassessment.databinding.FragmentOrderBinding
+import com.babakmhz.coffeeitassessment.utils.toGone
 import com.babakmhz.coffeeitassessment.view.base.BaseActivity
 import com.babakmhz.coffeeitassessment.view.base.BaseBottomSheetFragment
 import com.babakmhz.coffeeitassessment.view.main.MainViewModel
@@ -24,6 +25,15 @@ class OrderFragment : BaseBottomSheetFragment() {
 
     private val viewModel: MainViewModel by lazy {
         getSharedViewModel(requireActivity() as BaseActivity, MainViewModel::class.java)
+    }
+
+    private fun initOverviewUi() {
+        binding.btCancel.toGone()
+        binding.btConfirm.text = getString(R.string.done)
+    }
+
+    override fun isCancelable(): Boolean {
+        return false
     }
 
     override fun initializeUI() {
@@ -52,7 +62,7 @@ class OrderFragment : BaseBottomSheetFragment() {
                     requireContext(),
                     viewModel.getExtrasForType(type) as ArrayList<Extra>
                 ) {
-                    selectedType.selectedExtrasSubSelection.add(it)
+                    selectedType.addSubSelection(it)
                 }
             }
 
@@ -64,6 +74,8 @@ class OrderFragment : BaseBottomSheetFragment() {
 
         }
 
+        if (args.overview)
+            initOverviewUi()
 
         binding.btCancel.setOnClickListener {
             dismiss()
@@ -83,7 +95,7 @@ class OrderFragment : BaseBottomSheetFragment() {
 
         binding.btMinus.setOnClickListener {
             binding.txtCountIndicator.apply {
-                if (text.toString().toInt() > 0) {
+                if (text.toString().toInt() > 1) {
                     text = (text.toString().toInt() - 1).toString()
                 }
             }
@@ -94,6 +106,7 @@ class OrderFragment : BaseBottomSheetFragment() {
                 text = (text.toString().toInt() + 1).toString()
             }
         }
+
     }
 
     override fun getTheme(): Int {

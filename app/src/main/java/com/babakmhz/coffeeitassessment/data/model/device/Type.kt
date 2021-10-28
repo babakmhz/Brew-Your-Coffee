@@ -24,4 +24,28 @@ data class Type(
 
     @Transient
     var selectedCount = 1
+
+
+    fun addSubSelection(subSelection: Subselection) {
+        val removalSubs = arrayListOf<Subselection>()
+        val newSubs = arrayListOf<Subselection>()
+
+        if (selectedExtrasSubSelection.isEmpty())
+            selectedExtrasSubSelection.add(subSelection)
+        else{
+
+            for (selectedSub in selectedExtrasSubSelection) {
+                if (selectedSub.extraId != subSelection.extraId) {
+                    newSubs.add(subSelection)
+                } else {
+                    removalSubs.add(selectedSub)
+                    newSubs.add(subSelection)
+                }
+
+            }
+            selectedExtrasSubSelection.removeAll(removalSubs)
+            selectedExtrasSubSelection.addAll(newSubs)
+        }
+
+    }
 }

@@ -33,7 +33,7 @@ class OverviewFragment : BaseFragment() {
 
     override fun initializeUI() {
         rcl_overview.apply {
-            adapter = getOverviewAdapter(viewModel.orderedTypes)
+            adapter = getOverviewAdapter(arrayListOf(viewModel.orderedType))
         }
 
         observeTypes()
@@ -41,7 +41,7 @@ class OverviewFragment : BaseFragment() {
 
     private fun observeTypes() = viewModel.overviewTypesLiveData.observe(viewLifecycleOwner) {
         rcl_overview.apply {
-            adapter = getOverviewAdapter(it)
+            adapter = getOverviewAdapter(arrayListOf(it))
         }
     }
 
