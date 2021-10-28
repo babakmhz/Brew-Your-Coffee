@@ -28,7 +28,12 @@ class OrderFragment : BaseBottomSheetFragment() {
 
     override fun initializeUI() {
         args.type.let { type ->
-            selectedType = type
+
+            selectedType = type.apply {
+                selectedSize = null
+                selectedExtras = hashSetOf()
+            }
+
             binding.rclSize.apply {
                 adapter = SizesAdapter(
                     requireContext(),
