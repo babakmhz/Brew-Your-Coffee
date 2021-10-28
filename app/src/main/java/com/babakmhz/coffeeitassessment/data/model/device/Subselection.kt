@@ -9,4 +9,6 @@ data class Subselection(
     @Id @Expose(serialize = false,deserialize = false ) var id:Long = 0L,
     var _id: String = "",
     var name: String = ""
-)
+){
+    var selected = false
+}

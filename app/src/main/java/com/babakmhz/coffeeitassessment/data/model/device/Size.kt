@@ -13,4 +13,5 @@ data class Size(
     var _id: String = "",
     var name: String = ""
 ) {
+    var selected = false
 }

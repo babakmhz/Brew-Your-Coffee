@@ -4,13 +4,14 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "com.babakmhz.nearbywikipediaarticles"
+        applicationId "com.babakmhz.coffeeItAssessment"
         minSdk 21
         targetSdk 30
         versionCode 1

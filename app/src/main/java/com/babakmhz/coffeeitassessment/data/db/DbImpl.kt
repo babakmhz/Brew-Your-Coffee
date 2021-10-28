@@ -4,7 +4,7 @@ import com.babakmhz.coffeeitassessment.data.model.device.*
 import io.objectbox.BoxStore
 import javax.inject.Inject
 
-class DbImpl @Inject constructor(private val boxStore: BoxStore) : DbHelper {
+class DbImpl @Inject constructor(boxStore: BoxStore) : DbHelper,DbHelper.SharedMethods {
 
     private val typesBoxStore = boxStore.boxFor(Type::class.java)
     private val sizesBoxStore = boxStore.boxFor(Size::class.java)

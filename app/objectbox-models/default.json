@@ -70,7 +70,7 @@
     },
     {
       "id": "3:2919189202090066089",
-      "lastPropertyId": "6:5380116206411187051",
+      "lastPropertyId": "7:8573574162737917069",
       "name": "Size",
       "properties": [
         {
@@ -93,13 +93,18 @@
           "id": "4:7666919493558827691",
           "name": "name",
           "type": 9
+        },
+        {
+          "id": "7:8573574162737917069",
+          "name": "selected",
+          "type": 1
         }
       ],
       "relations": []
     },
     {
       "id": "4:6963571263303566615",
-      "lastPropertyId": "3:4495383885127078827",
+      "lastPropertyId": "4:4167301401311107133",
       "name": "Subselection",
       "properties": [
         {
@@ -117,6 +122,11 @@
           "id": "3:4495383885127078827",
           "name": "name",
           "type": 9
+        },
+        {
+          "id": "4:4167301401311107133",
+          "name": "selected",
+          "type": 1
         }
       ],
       "relations": []

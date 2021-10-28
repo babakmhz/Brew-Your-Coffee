@@ -13,4 +13,8 @@ interface DbHelper {
      fun getExtrasForType(type: Type):List<Extra>
      fun getImageUrlForType(type:Type):String
      fun clearTables()
+
+     interface SharedMethods{
+          fun getSizesForType(type:Type):List<Size>
+     }
 }

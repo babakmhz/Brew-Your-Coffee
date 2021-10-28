@@ -10,5 +10,4 @@ data class Extra(
     var _id: String = "",
     var name: String = "",
     var subselections: List<Subselection> = arrayListOf()
-){
-}
+)

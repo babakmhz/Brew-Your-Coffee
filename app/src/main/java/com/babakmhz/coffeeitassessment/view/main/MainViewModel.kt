@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.babakmhz.coffeeitassessment.data.RepositoryHelper
 import com.babakmhz.coffeeitassessment.data.model.device.Device
+import com.babakmhz.coffeeitassessment.data.model.device.Size
 import com.babakmhz.coffeeitassessment.data.model.device.Type
 import com.babakmhz.coffeeitassessment.utils.State
 import com.babakmhz.coffeeitassessment.utils.launchWithException
@@ -22,6 +23,7 @@ class MainViewModel @Inject constructor(
     private var _typesLiveData = MutableLiveData<State<List<Type>>>()
     val typesLivedata: LiveData<State<List<Type>>> = _typesLiveData
 
+
     fun getTypes() {
         viewModelScope.launchWithException(_typesLiveData) {
             _typesLiveData.postValue(State.Loading)
@@ -30,5 +32,8 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun getSizesForType(type: Type):List<Size>{
+        return repositoryHelper.getSizesForType(type)
+    }
 
 }

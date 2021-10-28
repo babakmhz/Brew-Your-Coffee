@@ -29,11 +29,14 @@
             android:id="@+id/action_productsFragment_to_overviewFragement"
             app:destination="@id/overviewFragement" />
     </fragment>
-    <fragment
+    <dialog
         android:id="@+id/orderFragment"
-        android:name="com.babakmhz.coffeeitassessment.OrderFragment"
+        android:name="com.babakmhz.coffeeitassessment.view.order.OrderFragment"
         android:label="fragment_order"
-        tools:layout="@layout/fragment_order" />
+        tools:layout="@layout/fragment_order" >
+        <argument android:name="type"
+            app:argType="com.babakmhz.coffeeitassessment.data.model.device.Type"/>
+    </dialog>
     <fragment
         android:id="@+id/overviewFragement"
         android:name="com.babakmhz.coffeeitassessment.OverviewFragement"
