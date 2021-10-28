@@ -28,11 +28,15 @@ class OrderFragment : BaseBottomSheetFragment() {
 
     override fun initializeUI() {
         args.type.let { type ->
+            selectedType = type
 
-            selectedType = type.apply {
-                selectedSize = null
-                selectedExtras = hashSetOf()
+            if (args.overview.not()) {
+                selectedType = type.apply {
+                    selectedSize = null
+                    selectedExtrasSubSelection = hashSetOf()
+                }
             }
+
 
             binding.rclSize.apply {
                 adapter = SizesAdapter(
@@ -48,8 +52,14 @@ class OrderFragment : BaseBottomSheetFragment() {
                     requireContext(),
                     viewModel.getExtrasForType(type) as ArrayList<Extra>
                 ) {
-                    selectedType.selectedExtras.add(it)
+                    selectedType.selectedExtrasSubSelection.add(it)
                 }
+            }
+
+            with(type.selectedCount) {
+                binding.txtCountIndicator.text = this.toString()
+                selectedType.selectedCount = this
+
             }
 
         }
@@ -73,11 +83,12 @@ class OrderFragment : BaseBottomSheetFragment() {
 
         binding.btMinus.setOnClickListener {
             binding.txtCountIndicator.apply {
-                if (text.toString().toInt()>0){
-                    text = (text.toString().toInt() -1 ).toString()
+                if (text.toString().toInt() > 0) {
+                    text = (text.toString().toInt() - 1).toString()
                 }
             }
         }
+
         binding.btPlus.setOnClickListener {
             binding.txtCountIndicator.apply {
                 text = (text.toString().toInt() + 1).toString()
@@ -92,7 +103,7 @@ class OrderFragment : BaseBottomSheetFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentOrderBinding.inflate(inflater)
         binding.type = args.type
         binding.executePendingBindings()

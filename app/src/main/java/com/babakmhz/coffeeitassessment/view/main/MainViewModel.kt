@@ -26,8 +26,10 @@ class MainViewModel @Inject constructor(
     private var _overviewSizeLiveData = MutableLiveData<Int>()
     val overviewSizeLiveData: LiveData<Int> = _overviewSizeLiveData
 
+    private var _overviewTypesLiveData = MutableLiveData<ArrayList<Type>>()
+    val overviewTypesLiveData: LiveData<ArrayList<Type>> = _overviewTypesLiveData
 
-    val orderedTypes = hashMapOf<Type,Int>() // type,count
+    val orderedTypes = ArrayList<Type>()
 
     fun getTypes() {
         viewModelScope.launchWithException(_typesLiveData) {
@@ -46,11 +48,14 @@ class MainViewModel @Inject constructor(
     }
 
     fun addToWishList(type:Type){
-        orderedTypes[type] = type.selectedCount
-        var totalCount = 0
-        for((type,count) in orderedTypes){
-            totalCount += count
+        // we could also use hashmap for it
+        if (orderedTypes.contains(type).not()){
+            orderedTypes.add(type)
         }
-        _overviewSizeLiveData.postValue(totalCount)
+        else{
+            orderedTypes[orderedTypes.indexOf(type)] = type
+        }
+        _overviewSizeLiveData.postValue(orderedTypes.size)
+        _overviewTypesLiveData.postValue(orderedTypes)
     }
 }

@@ -1,79 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:elevation="2dp"
-    android:padding="4dp"
-    android:layout_marginBottom="4dp"
-    app:cardCornerRadius="8dp">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+<layout>
+    <data>
+        <variable
+            name="type"
+            type="com.babakmhz.coffeeitassessment.data.model.device.Type" />
+    </data>
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="6dp">
+        android:elevation="2dp"
+        android:padding="4dp"
+        android:layout_marginBottom="4dp"
+        app:cardCornerRadius="8dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/item_img"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/coffee_startup" />
-
-        <TextView
-            android:id="@+id/txt_title"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="8dp"
-            android:gravity="start"
-            android:padding="6dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:typeface="monospace"
-            app:layout_constraintStart_toEndOf="@id/item_img"
-            app:layout_constraintTop_toTopOf="@id/item_img"
-            tools:text="Select your type of milk" />
+            android:layout_margin="6dp">
 
-        <TextView
-            android:id="@+id/txt_count"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="8dp"
-            android:gravity="start"
-            android:text="@string/dx"
-            android:paddingStart="6dp"
-            android:textColor="@color/color_inactive"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            android:typeface="monospace"
-            app:layout_constraintStart_toEndOf="@id/item_img"
-            app:layout_constraintTop_toBottomOf="@id/txt_title"
-            tools:text="3x - 2 Extras" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/item_img"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                loadImage="@{type.imageUrl}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/coffee_startup" />
 
-        <TextView
-            android:id="@+id/txt_edit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="8dp"
-            android:gravity="start"
-            android:padding="6dp"
-            android:text="@string/edit"
-            android:textColor="#2196F3"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:typeface="monospace"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/item_img"
+                app:layout_constraintTop_toTopOf="@id/item_img"
+                app:layout_constraintBottom_toBottomOf="@id/item_img"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/txt_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{type.name}"
+                    android:gravity="start"
+                    android:padding="6dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:typeface="monospace"
+                    tools:text="Select your type of milk" />
+
+                <TextView
+                    android:id="@+id/txt_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{@string/dx(type.selectedCount)}"
+                    android:gravity="start"
+                    tools:text="3x"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:typeface="monospace"
+                   />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/txt_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="start"
+                android:padding="6dp"
+                android:text="@string/edit"
+                android:textColor="#2196F3"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:typeface="monospace"
+                app:layout_constraintBottom_toBottomOf="@id/item_img"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/item_img" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

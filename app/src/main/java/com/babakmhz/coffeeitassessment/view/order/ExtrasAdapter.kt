@@ -12,7 +12,7 @@ import com.babakmhz.coffeeitassessment.databinding.ItemExtrasBinding
 class ExtrasAdapter(
     private val context: Context,
     private val items: ArrayList<Extra>,
-    private val onSubSelected:(Extra)->Unit
+    private val onSubSelected:(Subselection)->Unit
 ) : RecyclerView.Adapter<ExtrasAdapter.ViewHolder>() {
 
 
@@ -27,9 +27,7 @@ class ExtrasAdapter(
                 adapter = SubSelectionsAdapter(context,
                     item.subselections as ArrayList<Subselection>
                 ) {
-                    onSubSelected.invoke(item.apply {
-                        selectedSub = it
-                    })
+                    onSubSelected.invoke(it)
                 }
             }
         }

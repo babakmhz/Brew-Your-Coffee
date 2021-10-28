@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/startUpFragment"
-        android:name="com.babakmhz.coffeeitassessment.StartUpFragment"
+        android:name="com.babakmhz.coffeeitassessment.view.startup.StartUpFragment"
         android:label="fragment_start_up"
         tools:layout="@layout/fragment_start_up" >
         <action
@@ -36,10 +36,14 @@
         tools:layout="@layout/fragment_order" >
         <argument android:name="type"
             app:argType="com.babakmhz.coffeeitassessment.data.model.device.Type"/>
+
+        <argument android:name="overview"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </dialog>
     <fragment
         android:id="@+id/overviewFragement"
-        android:name="com.babakmhz.coffeeitassessment.OverviewFragment"
+        android:name="com.babakmhz.coffeeitassessment.view.overview.OverviewFragment"
         android:label="fragment_overview_fragement"
         tools:layout="@layout/fragment_overview" >
         <action

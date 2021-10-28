@@ -13,7 +13,7 @@
     <string name="size">Size</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
-    <string name="dx">%dX - %d Extras</string>
+    <string name="dx">%dX</string>
     <string name="edit"><u>Edit</u></string>
     <string name="d_sizes">%d sizes</string>
     <string name="d_extras">%d Extras</string>

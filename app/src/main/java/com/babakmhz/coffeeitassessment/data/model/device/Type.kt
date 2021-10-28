@@ -20,8 +20,8 @@ data class Type(
     var selectedSize: Size? = null
 
     @Transient
-    var selectedExtras: HashSet<Extra> = hashSetOf()
+    var selectedExtrasSubSelection: HashSet<Subselection> = hashSetOf()
 
     @Transient
-    var selectedCount = 0
+    var selectedCount = 1
 }

@@ -33,6 +33,14 @@ class ProductsFragment : BaseFragment() {
             this.adapter = productsAdapter
             layoutManager = GridLayoutManager(requireContext(), 2)
         }
+
+        binding.lytOverview.setOnClickListener {
+            findNavController().navigate(R.id.action_productsFragment_to_overviewFragement)
+        }
+
+        binding.imgExit.setOnClickListener {
+            requireActivity().finish()
+        }
     }
 
 

@@ -22,7 +22,7 @@ class RepositoryImpl @Inject constructor(
         val device = apiService.getDeviceCoffees()
         for (type in device.types) {
             var url = dbHelper.getImageUrlForType(type)
-            if (url.validString().not()){
+            if (url.validString().not()) {
                 url = getImageUrlForType(type.name)
             }
             type.apply {
@@ -39,14 +39,28 @@ class RepositoryImpl @Inject constructor(
     }
 
     override fun getSizesForType(type: Type): List<Size> {
-        return dbHelper.getSizesForType(type)
+        val sizes = dbHelper.getSizesForType(type)
+
+        type.selectedSize?.let {
+            for (size in sizes) {
+                if (size == type.selectedSize){
+                    size.selected = true
+                }
+            }
+        }
+
+        return sizes
     }
 
     override fun getExtrasForType(type: Type): List<Extra> {
         val extras = dbHelper.getExtrasForType(type)
-        for(extra in extras){
+        for (extra in extras) {
             extra.apply {
                 subselections = dbHelper.getSubSelectionsForExtra(extra)
+                for(sub in subselections){
+                    if (type.selectedExtrasSubSelection.contains(sub))
+                        sub.selected = true
+                }
             }
         }
         return extras
