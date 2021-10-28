@@ -4,7 +4,7 @@ import com.babakmhz.coffeeitassessment.data.model.device.*
 import io.objectbox.BoxStore
 import javax.inject.Inject
 
-class DbImpl @Inject constructor(boxStore: BoxStore) : DbHelper,DbHelper.SharedMethods {
+class DbImpl @Inject constructor(boxStore: BoxStore) : DbHelper, DbHelper.SharedMethods {
 
     private val typesBoxStore = boxStore.boxFor(Type::class.java)
     private val sizesBoxStore = boxStore.boxFor(Size::class.java)
@@ -19,6 +19,9 @@ class DbImpl @Inject constructor(boxStore: BoxStore) : DbHelper,DbHelper.SharedM
         extraBoxStore.put(device.extras)
         typesBoxStore.put(device.types)
         for (extra in device.extras) {
+            for(sub in extra.subselections){
+                sub.extraId = extra._id
+            }
             subSelectionsBoxStore.put(extra.subselections)
         }
         return id
@@ -35,7 +38,14 @@ class DbImpl @Inject constructor(boxStore: BoxStore) : DbHelper,DbHelper.SharedM
         val query = extraBoxStore.query().filter {
             type.extras.contains(it._id)
         }.build()
+
         return query.find()
+    }
+
+    override fun getSubSelectionsForExtra(extra: Extra): List<Subselection> {
+        return subSelectionsBoxStore.query().filter {
+            extra._id == it.extraId
+        }.build().find()
     }
 
     override fun getImageUrlForType(type: Type): String {
@@ -51,6 +61,7 @@ class DbImpl @Inject constructor(boxStore: BoxStore) : DbHelper,DbHelper.SharedM
         sizesBoxStore.removeAll()
         extraBoxStore.removeAll()
         typesBoxStore.removeAll()
+        subSelectionsBoxStore.removeAll()
     }
 
 }

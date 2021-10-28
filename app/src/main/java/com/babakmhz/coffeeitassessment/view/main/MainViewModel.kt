@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.babakmhz.coffeeitassessment.data.RepositoryHelper
 import com.babakmhz.coffeeitassessment.data.model.device.Device
+import com.babakmhz.coffeeitassessment.data.model.device.Extra
 import com.babakmhz.coffeeitassessment.data.model.device.Size
 import com.babakmhz.coffeeitassessment.data.model.device.Type
 import com.babakmhz.coffeeitassessment.utils.State
@@ -36,4 +37,7 @@ class MainViewModel @Inject constructor(
         return repositoryHelper.getSizesForType(type)
     }
 
+    fun getExtrasForType(type: Type):List<Extra>{
+        return repositoryHelper.getExtrasForType(type)
+    }
 }

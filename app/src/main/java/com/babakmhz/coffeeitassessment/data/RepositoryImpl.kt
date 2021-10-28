@@ -2,6 +2,7 @@ package com.babakmhz.coffeeitassessment.data
 
 import com.babakmhz.coffeeitassessment.data.db.DbHelper
 import com.babakmhz.coffeeitassessment.data.model.device.Device
+import com.babakmhz.coffeeitassessment.data.model.device.Extra
 import com.babakmhz.coffeeitassessment.data.model.device.Size
 import com.babakmhz.coffeeitassessment.data.model.device.Type
 import com.babakmhz.coffeeitassessment.data.network.ApiService
@@ -39,6 +40,16 @@ class RepositoryImpl @Inject constructor(
 
     override fun getSizesForType(type: Type): List<Size> {
         return dbHelper.getSizesForType(type)
+    }
+
+    override fun getExtrasForType(type: Type): List<Extra> {
+        val extras = dbHelper.getExtrasForType(type)
+        for(extra in extras){
+            extra.apply {
+                subselections = dbHelper.getSubSelectionsForExtra(extra)
+            }
+        }
+        return extras
     }
 
 

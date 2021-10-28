@@ -104,7 +104,7 @@
     },
     {
       "id": "4:6963571263303566615",
-      "lastPropertyId": "4:4167301401311107133",
+      "lastPropertyId": "5:4264709581754315124",
       "name": "Subselection",
       "properties": [
         {
@@ -127,6 +127,11 @@
           "id": "4:4167301401311107133",
           "name": "selected",
           "type": 1
+        },
+        {
+          "id": "5:4264709581754315124",
+          "name": "extraId",
+          "type": 9
         }
       ],
       "relations": []

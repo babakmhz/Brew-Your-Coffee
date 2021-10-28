@@ -70,6 +70,9 @@ class DbImplTest {
         assertFalse(sizesBox.all.isEmpty())
         assertFalse(extrasBox.all.isEmpty())
         assertFalse(subSelectionsBox.all.isEmpty())
+        for(extra in extrasBox.all ){
+            assertFalse(extra.subselections.isEmpty())
+        }
     }
 
 
@@ -87,10 +90,12 @@ class DbImplTest {
         val type = typesBox.all[0]
         val sizes = dbImpl.getSizesForType(type)
         val extras = dbImpl.getExtrasForType(type)
+        val subSelections = dbImpl.getSubSelectionsForExtra(extras[0])
 
         println(type)
         assertEquals(sizes.size,type.sizes.size)
         assertEquals(extras.size,type.extras.size)
+        assertEquals(subSelections.size,device.extras[0].subselections.size)
     }
 
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.babakmhz.coffeeitassessment.R
+import com.babakmhz.coffeeitassessment.data.model.device.Extra
 import com.babakmhz.coffeeitassessment.data.model.device.Size
 import com.babakmhz.coffeeitassessment.databinding.FragmentOrderBinding
 import com.babakmhz.coffeeitassessment.view.base.BaseActivity
@@ -26,8 +27,6 @@ class OrderFragment : BaseBottomSheetFragment() {
     override fun initializeUI() {
         args.type.let {
             binding.rclSize.apply {
-                layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 adapter = SizesAdapter(requireContext(),
                     viewModel.getSizesForType(it) as ArrayList<Size>
                 ) {
@@ -35,6 +34,11 @@ class OrderFragment : BaseBottomSheetFragment() {
                 }
             }
 
+            binding.rclExtras.apply {
+                adapter = ExtrasAdapter(requireContext(),
+                    viewModel.getExtrasForType(it) as ArrayList<Extra>
+                )
+            }
 
         }
 

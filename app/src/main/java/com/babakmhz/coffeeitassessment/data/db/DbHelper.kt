@@ -1,9 +1,6 @@
 package com.babakmhz.coffeeitassessment.data.db
 
-import com.babakmhz.coffeeitassessment.data.model.device.Device
-import com.babakmhz.coffeeitassessment.data.model.device.Extra
-import com.babakmhz.coffeeitassessment.data.model.device.Size
-import com.babakmhz.coffeeitassessment.data.model.device.Type
+import com.babakmhz.coffeeitassessment.data.model.device.*
 import com.babakmhz.coffeeitassessment.data.model.typeImages.Urls
 
 interface DbHelper {
@@ -11,10 +8,12 @@ interface DbHelper {
      fun putAllData(device: Device):Long
      fun getSizesForType(type: Type):List<Size>
      fun getExtrasForType(type: Type):List<Extra>
+     fun getSubSelectionsForExtra(extra: Extra):List<Subselection>
      fun getImageUrlForType(type:Type):String
      fun clearTables()
 
      interface SharedMethods{
           fun getSizesForType(type:Type):List<Size>
+          fun getExtrasForType(type: Type):List<Extra>
      }
 }
